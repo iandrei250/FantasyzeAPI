@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using HeroesApi.Contexts;
-using HeroesApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
