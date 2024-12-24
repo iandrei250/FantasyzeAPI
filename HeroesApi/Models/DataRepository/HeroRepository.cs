@@ -14,7 +14,7 @@ public class HeroRepository(HeroContext context) : IDataRepository
         await _heroContext.SaveChangesAsync();
     }
 
-    public async Task<Hero?> GetAsync(int id) => await _heroContext.Heroes.FindAsync(id);
+    public async Task<Hero?> GetAsync(long id) => await _heroContext.Heroes.FindAsync(id);
 
     public async Task UpdateAsync(Hero entityToUpdate, Hero entity)
     {

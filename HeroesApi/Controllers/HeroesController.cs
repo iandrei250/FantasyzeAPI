@@ -19,7 +19,7 @@ public class HeroesController(IDataRepository dataRepository) : ControllerBase
     }
 
     [HttpGet("{id}", Name = "GetHero")]
-    public async Task<IActionResult> Gethero(int id)
+    public async Task<IActionResult> Gethero(long id)
     {
         var hero = await _dataRepository.GetAsync(id);
         if (hero is null)
