@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<HeroContext>(options =>
 {
+    builder.Configuration.AddEnvironmentVariables();
     var connectionString = builder.Configuration.GetConnectionString("HeroesConnection");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
@@ -30,5 +31,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<HeroContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
