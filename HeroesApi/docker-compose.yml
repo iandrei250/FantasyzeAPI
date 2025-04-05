@@ -1,35 +1,19 @@
-version: "3.8"
-
 services:
   db:
     image: mariadb:latest
+    networks:
+      - heroes-network
+    ports:
+      - "3306:3306"
     container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: heroesdatabase
-    volumes:
-      - dbdata:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-padmin"]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-      timeout: 10s
-
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: heroes-backend
-    depends_on:
-      - db
-    environment:
-      ConnectionStrings__HeroesConnection: "server=db:3306;database=heroesdatabase;user=root;password=admin;"
-    ports:
-      - "5162:8080"
-    restart: unless-stopped
 
 volumes:
   dbdata:
+
+
+networks:
+  heroes-network:
+    driver: bridge
