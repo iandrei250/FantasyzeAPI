@@ -9,11 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: heroesdatabase
-
 volumes:
   dbdata:
-
-
 networks:
   heroes-network:
     driver: bridge
