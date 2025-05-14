@@ -1,4 +1,5 @@
 using HeroesApi.Models;
+using HeroesApi.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Models.Contracts;
 
@@ -31,7 +32,7 @@ public class HeroesController(IDataRepository dataRepository) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostHero([FromBody] Hero hero)
+    public async Task<IActionResult> PostHero([FromBody] HeroDTO hero)
     {
         if (hero is null)
         {
@@ -43,7 +44,7 @@ public class HeroesController(IDataRepository dataRepository) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutHero(int id, [FromBody] Hero hero){
+    public async Task<IActionResult> PutHero(int id, [FromBody] HeroDTO hero){
         if (hero is null)
         {
             return BadRequest("hero is null.");

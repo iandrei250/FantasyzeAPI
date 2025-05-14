@@ -20,13 +20,15 @@ public class HeroContext : DbContext
             {
                 Id = 1,
                 Name = "Batman",
-                Description = "Batman is cool"
+                Description = "Batman is cool",
+                Image = new byte[] { 0x00, 0x01, 0x02 }
             },
              new Hero
             {
                 Id = 2,
                 Name = "Spider-Man",
-                Description = "Spider-Man is cool"
+                Description = "Spider-Man is cool",
+                Image = new byte[] { 0x00, 0x01, 0x02 }
             }
         );
     }

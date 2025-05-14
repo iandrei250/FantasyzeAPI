@@ -3,6 +3,7 @@ using HeroesApi.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HeroesApi.Migrations
 {
     [DbContext(typeof(HeroContext))]
-    partial class HeroContextModelSnapshot : ModelSnapshot
+    [Migration("20250514161510_AddImageToHero")]
+    partial class AddImageToHero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,14 +53,14 @@ namespace HeroesApi.Migrations
                         {
                             Id = 1L,
                             Description = "Batman is cool",
-                            Image = new byte[] { 0, 1, 2 },
+                            Image = new byte[] { 0, 1, 2, 3 },
                             Name = "Batman"
                         },
                         new
                         {
                             Id = 2L,
                             Description = "Spider-Man is cool",
-                            Image = new byte[] { 0, 1, 2 },
+                            Image = new byte[] { 0, 1, 2, 3 },
                             Name = "Spider-Man"
                         });
                 });
