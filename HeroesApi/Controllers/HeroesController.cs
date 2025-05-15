@@ -32,7 +32,7 @@ public class HeroesController(IDataRepository dataRepository) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostHero([FromBody] HeroDTO hero)
+    public async Task<IActionResult> PostHero([FromForm] HeroDTO hero)
     {
         if (hero is null)
         {
